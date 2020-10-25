@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+    <html>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Dating app</title>
+            <link rel="stylesheet" href="index.css">
+        </head>
+
+        <body>
+        
+            <h1>Dating app</h1>
+
+            <form id="form1">
+                <p id="p1">Sign in</p>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text">
+                    <br>
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password">
+                </div>
+                <br>
+                <button class="button">Log in</button>
+
+            </form>
+            <form id="form2"> 
+                <p id="p2">Sign up</p>
+                <div class="input">
+                    <label for="name">Name:</label>
+                    <input id= "name" type="name"><br>
+                    <br>
+                    <label for="birthday">Birthday:</label>
+                    <input id= "birthday" type="date"><br>
+
+                    <br>
+                    <label for="gender">Gender:</label>
+                    <select name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select><br>
+
+                    <br>
+                    <label for="email">Email:</label>
+                    <input id= "email" type="text"><br>
+                    <br>
+                    
+                    <label for="password">Password:</label>
+                    <input id= "password" type="password"><br>
+                        <div class= "check" id="checksField">
+                            <p>Password must contain the following:</p>
+                            <p id="letter" class="wrong">A <b>lowercase</b> letter</p>
+                            <p id="capital" class="wrong">A <b>capital (uppercase)</b>letter</p>
+                            <p id="number" class="wrong">A <b>number</b></p>
+                            <p id="length" class="wrong">At least<b> 5 characters</b></p>
+                        </div> 
+                </div>
+                <button class="button"> Create </button>
+            </form>
+
+           <script src="server.js"></script>
+        </body>
+
+    </html>
+    

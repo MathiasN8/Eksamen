@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const userSchema = require('../models/userModel');
 
+
 //Admin see list of users
 router.get("/users", function(req,res){
     res.send("Get");

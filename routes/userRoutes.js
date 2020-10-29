@@ -17,19 +17,25 @@ router.post("/users", function(req,res){
         age: req.body.age
     });
     //save is a method provided by mongoose to use on mongoose models
-    user.save().then(function(result){
+    user
+        .save()
+        .then(function(result){
         console.log(result);
+        
     }) 
     .catch(function(err){
         console.log(err);
     })
     // its returning the user which is the mongoose object
-    res.send({message: "Post", createdUser: user}); 
+     res.send({message: "Post", createdUser: user});
 });
-
-// Se en enkelt bruger -- Virker ikke 
-router.get("users/:id", function(req,res,){
+//
+//
+//
+// Se en enkelt bruger -- Virker ikke !!!!
+router.get("/:Id", function(req,res,){
     const id = req.params.userId;
+
     userSchema.findById(id)
         .exec()
         .then(doc => {
@@ -37,16 +43,13 @@ router.get("users/:id", function(req,res,){
     
             res.status(200).json(doc);
         })
-        /*
+    
         .catch(err => {
             console.log(err)
-            res.send.json({error: err});
-        });
-        */
-        
-
-    
+            res.status(500).json({error: err });
+        });    
 });
+
 
 //Update a user. /: takes the id of the user ---ID--https://www.youtube.com/watch?v=FV1Ugv1Temg&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q&index=3 ---10 min
 router.put("/users/:id", function(req,res){

@@ -1,14 +1,15 @@
 body{
     font-family: Arial;
     background-color: #203647;
-    color: #EEFBFB;
+    color: #000000;
 }
 h1{
     text-align: center;
+    color:  #EEFBFB ;
 }
 
 #form1{
-    background-color: rgb(08, 83, 111);
+    background-color: #EEFBFB;
     float: left;
     width: 25%;
     padding: 10px;
@@ -18,7 +19,7 @@ h1{
     border-radius: 5%;
 }
 #form2{
-    background-color: rgb(08, 83, 111);
+    background-color: #EEFBFB;
     float: right;
     width: 25%;
     padding: 10px;
@@ -53,4 +54,7 @@ h1{
 }
 .check{
     font-size: small;
+}
+.output{
+    border: solid white 1px;
 }

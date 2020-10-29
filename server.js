@@ -1,18 +1,29 @@
 const express = require('express');
 const app = express();
-const routes = require('./routes/admin');
+const userRoutes = require('./routes/userRoutes');
+const path = require('path');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-//initialize routes
-app.use(routes);
 
-//viser filer i mappen View. HTML filen bliver vist på localhost: 3000
-app.use(express.static('view'));
-
-app.get("/", function(req,res){
-    res.send("Hello World");
+//connect to database
+mongoose.connect('mongodb+srv://Matti:famnielsen@restapi.rsmlk.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
-//Server bliver aktiveret på port 3000
+
+//Body-parser?
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+//initialize routes
+app.use(userRoutes);
+
+//Show index.html on localhost
+app.use(express.static(path.resolve(__dirname, 'view')));
+
+//Server running on port 3000
 app.listen(3000, function(){
     console.log("Server kører");
 });

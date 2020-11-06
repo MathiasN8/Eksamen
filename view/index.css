@@ -5,7 +5,7 @@ body{
 }
 h1{
     text-align: center;
-    color:  #EEFBFB ;
+    color:  #ffffff ;
 }
 
 #form1{
@@ -35,7 +35,7 @@ h1{
 }
 .Btn{
     background-color: #203647;
-    color: #EEFBFB;
+    color: #ffffff;
     width: 100%;
     height: 10%;
     font-size: larger;

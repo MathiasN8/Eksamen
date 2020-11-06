@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const ejs = require('ejs');
 
 //Routes
 const adminRoutes = require('./routes/adminRoutes');

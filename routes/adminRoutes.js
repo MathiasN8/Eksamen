@@ -21,7 +21,8 @@ router.get("/", function(req,res){
 });
 
 //add a new user
-router.post("/", function(req,res){
+//Skal admin ikke kunne gøre
+/*router.post("/", function(req,res){
     const user = new userSchema({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -39,7 +40,8 @@ router.post("/", function(req,res){
     })
     // its returning the user which is the mongoose object
      
-});
+}); 
+*/
 
 // Se en enkelt bruger
 router.get("/:userId", function(req,res,){

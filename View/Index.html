@@ -12,43 +12,44 @@
         <body>
             <h1>Dating app</h1>
 
-            <form id="form1">
+            <form id="form1" method="POST" action="http://localhost:3000/user/login" name='logInForm' role="form" enctype="application/json">
                 <p id="p1">Sign in</p>
                 <div>
-                    <label for="name">Name:</label>
-                    <input type="text" required>
+                    <label for="email">Email:</label>
+                    <input name='email' type="email" required>
                     <br>
                     <br>
                     <label for="password">Password:</label>
-                    <input type="password" required>
+                    <input name='password' type="password" required>
                 </div>
                 <br>
-                <button class="button">Log in</button>
+                <input type="submit" class="Btn" value="Log in">
             </form>
 
-            <form method="POST" id="form2"> 
+            <form method="POST" action="http://localhost:3000/user/signup" id="form2" name="signupForm" role="form" enctype="application/json"> 
                 <p id="p2">Sign up</p>
                 <div class="input">
                     <label for="name">Name:</label>
-                    <input id= "name" type="name" required><br>
+                    <input name='name' id= "name" type="text" required><br>
                     <br>
                     <label for="Age">Age:</label>
-                    <input id= "Age" type="number"><br>
+                    <input name='age' id= "Age" type="number"><br>
 
                     <br>
                     <label for="Interest">Interest:</label>
-                    <input id= "interest" type="text"><br>
+                    <input name='interest' id= "interest" type="text"><br>
 
                     <br>
                     <label for="email">Email:</label>
-                    <input id= "email" type="email" ><br>
+                    <input name='email' id= "email" type="email" ><br>
                     <br>
                     
                     <label for="password">Password:</label>
-                    <input id= "password" type="password"><br>
+                    <input name='password' id= "password" type="password"><br>
                 <br>
+                
                 </div>
-                <button id="createBtn" class="button" type="submit"> Create </button>
+                <input type="submit" class="Btn" value="Create">
             </form>
 
             

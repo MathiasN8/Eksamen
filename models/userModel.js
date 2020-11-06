@@ -13,20 +13,6 @@ module.exports = mongoose.model('User', userSchema);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 //Local storage for signUp input
 const form = document.querySelector('#form2');

@@ -33,7 +33,7 @@ h1{
     font-size: larger;
     
 }
-.button{
+.Btn{
     background-color: #203647;
     color: #EEFBFB;
     width: 100%;
@@ -47,7 +47,7 @@ h1{
     -webkit-transition-property: box-shadow, transform;
     transition-property: box-shadow, transform;
 }
-.button:hover, .button:focus, .button:active{
+.Btn:hover, .Btn:focus, .Btn:active{
     box-shadow: 0 0 20px rgba(99, 100, 100, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.05);

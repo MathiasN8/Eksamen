@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const ejs = require('ejs');
+
+// serves up static CSS files 
+router.use(express.static( './views/'));
 
 const User = require('../models/userModel');
 
@@ -29,6 +31,7 @@ router.post('/signup', function(req, res){
                 if (result) {
                     console.log(result);
                     res.status(200).json(result);
+                    //res.render('home', {result: result});
                 } else {
                     res.status(404).json({message: "fejl i oprettelse"});
                 }
@@ -55,7 +58,8 @@ router.post('/login', (req, res) => {
                 });
             }
             if(users[0].password == req.body.password){
-                res.status(404).json(users[0]);
+                //res.status(404).json(users[0]);
+                res.render('home', { 'user': users[0]})
             } else {
                 return res.status(404).json({
                     message: 'Login failed'

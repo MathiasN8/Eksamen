@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 
 const userSchema = require('../models/userModel');
 
@@ -9,11 +9,9 @@ const userSchema = require('../models/userModel');
 router.get("/", function(req,res){
     userSchema.find()
         .then(docs => {
-            console.log(docs);
             res.status(200).json(docs);
         })
         .catch( err => {
-            console.log(err);
             res.status(500).json({
                 error: err
             });

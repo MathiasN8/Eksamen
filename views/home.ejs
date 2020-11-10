@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <h1>Homepage</h1>
+    <div>
+        
+        <% if (user) { %>
+                <h2><%= user.name %></h2>
+                <ul>
+                    <li> Age: <%=user.age%> </li>
+                    <li> Interest: <%=user.interest%> </li>
+                    <li> Email: <%=user.email%> </li>
+
+                </ul>
+        <% } %>
+    </div>
+    <div>
+        Matches?
+    </div>
+</body>
+</html>

@@ -3,7 +3,9 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const ejs = require('ejs');
+
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
 
 //Routes
 const adminRoutes = require('./routes/adminRoutes');
@@ -24,7 +26,13 @@ app.use('/admin', adminRoutes);
 app.use('/user', userRoutes); 
 
 //Show index.html on localhost
-app.use(express.static(path.resolve(__dirname, 'view')));
+//app.use(express.static(path.resolve(__dirname, 'views')));
+app.use(express.static(__dirname + '/views/'));
+
+//forside 
+app.get('/', function(req, res) {
+    res.render('index');
+});
 
 //Server running on port 3000
 app.listen(3000, function(){

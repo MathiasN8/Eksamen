@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 //const mongoose = require('mongoose');
 
+router.use(express.static( './views/'));
+
 const userSchema = require('../models/userModel');
 
 
@@ -9,7 +11,8 @@ const userSchema = require('../models/userModel');
 router.get("/", function(req,res){
     userSchema.find()
         .then(docs => {
-            res.status(200).json(docs);
+            //res.status(200).json(docs);
+            res.render('admin', {'ul': docs});
         })
         .catch( err => {
             res.status(500).json({

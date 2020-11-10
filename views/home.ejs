@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Homepage</h1>
-    <div>
-        
+
+    <div id="profile"> 
         <% if (user) { %>
                 <h2><%= user.name %></h2>
                 <ul>
@@ -20,8 +20,10 @@
                 </ul>
         <% } %>
     </div>
-    <div>
-        Matches?
+
+    <div id='matches'>
+        <h2>Matches?</h2>
     </div>
+
 </body>
 </html>

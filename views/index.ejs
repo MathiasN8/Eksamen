@@ -11,21 +11,41 @@
 
         <body>
             <h1>Dating App</h1>
-
-            <form id="form1" method="POST" action="http://localhost:3000/user/login" name='logInForm' role="form" enctype="application/json">
-                <p id="p1">Sign in</p>
-                <div>
-                    <label for="email">Email:</label>
-                    <input name='email' type="email" required>
+            <!--User sign ip form-->
+            <div id="form1">
+                <form method="POST" action="http://localhost:3000/user/login" name='logInForm' role="form" enctype="application/json">
+                    <p id="p1">Log in User</p>
+                    <div class="input">
+                        <label for="email">Email:</label>
+                        <input name='email' type="email" required>
+                        <br>
+                        <br>
+                        <label for="password">Password:</label>
+                        <input name='password' type="password" required>
+                    </div>
                     <br>
-                    <br>
-                    <label for="password">Password:</label>
-                    <input name='password' type="password" required>
-                </div>
-                <br>
-                <input type="submit" class="Btn" value="Log in">
-            </form>
+                    <input type="submit" class="Btn" value="Log in">
+                </form>
 
+                <!--Admin sign in form-->
+                <form id="form3" method="POST" action="http://localhost:3000/admin" name='logInForm' role="form" enctype="application/json">
+                    <p id="p1">Log in Admin</p>
+                    <div class="input">
+                        <label for="email">Email:</label>
+                        <input name='email' type="email" >
+                        <br>
+                        <br>
+                        <label for="password">Password:</label>
+                        <input name='password' type="password" >
+                    </div>
+                    <br>
+                    <input type="submit" class="Btn" value="Log in">
+                </form>
+                
+            </div>
+
+            
+            <!--Sign up form-->
             <form method="POST" action="http://localhost:3000/user/signup" id="form2" name="signupForm" role="form" enctype="application/json"> 
                 <p id="p2">Sign up</p>
                 <div class="input">

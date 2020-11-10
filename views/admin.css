@@ -7,30 +7,22 @@ body{
     font-family: Arial;
     background-color: #203647;
     color: #ffffff;
+    
 }
 
-#profile{
-    float: left;
+#list{
+    margin: auto;
     background-color: #ffffff;
     color: black;
-    height: 500px;
-    width: 25%;
+    height: 100%;
+    width: 60%;
     text-align: center;
-    
 }
 
 ul{
     list-style: none;
-}
-li{
-    margin: 0 0 10% 0;
-}
-
-#matches{
-    float: right;
-    width: 50%;
-    height: 500px;
-    color: black;
-    background-color: #ffffff;
-    text-align: center;
+    padding-left: 0;
+    display: inline-block; 
+    text-align: left; 
+        
 }

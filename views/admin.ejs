@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <h1>Admin</h1>
+
+    <div id="list">
+        <h2>User List</h2>
+        
+        <% if (ul) { %>
+
+            <h3>User 1</h3>
+            <ul>
+                <li> ID: <%=ul[0].id%> </li>
+                <li> Name: <%=ul[0].name%> </li>
+                <li> Age: <%=ul[0].age%> </li>
+                <li> Interest: <%=ul[0].interest%> </li>
+                <li> Email: <%=ul[0].email%> </li>
+                <li> Password: <%=ul[0].password%> </li>
+            </ul>
+
+            <h3>User 2</h3>
+            <ul>
+                <li> ID: <%=ul[1].id%> </li>
+                <li> Name: <%=ul[1].name%> </li>
+                <li> Age: <%=ul[1].age%> </li>
+                <li> Interest: <%=ul[1].interest%> </li>
+                <li> Email: <%=ul[1].email%> </li>
+                <li> Password: <%=ul[1].password%> </li>
+            </ul>
+            
+            <h3>User 3</h3>
+            <ul>
+                <li> ID: <%=ul[2].id%> </li>
+                <li> Name: <%=ul[2].name%> </li>
+                <li> Age: <%=ul[2].age%> </li>
+                <li> Interest: <%=ul[2].interest%> </li>
+                <li> Email: <%=ul[2].email%> </li>
+                <li> Password: <%=ul[2].password%> </li>
+            </ul>
+
+            
+        <% } %>
+
+
+    </div>
+    
+</body>
+</html>

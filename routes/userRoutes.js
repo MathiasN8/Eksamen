@@ -57,6 +57,7 @@ router.post('/login', (req, res) => {
                     message: 'User does not exist' 
                 });
             }
+        
             if(users[0].password == req.body.password){
                 //res.status(404).json(users[0]);
                 res.render('home', { 'user': users[0]})

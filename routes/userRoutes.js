@@ -75,6 +75,10 @@ router.post('/login', (req, res) => {
         });
 });
 
+// Opdatere sin egen bruger https://docs.mongodb.com/manual/reference/method/db.collection.update/
+
+
+
 //Skal kunne slet sin egen profil
 router.post('/delete', (req, res) =>{
     //User.deleteOne({_id: req.body._id})

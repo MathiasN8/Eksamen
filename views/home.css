@@ -8,15 +8,26 @@ body{
     background-color: #203647;
     color: #ffffff;
 }
-
+/*
+#box{
+    color: black;
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    padding-left:15px; 
+    padding-right:15px;
+    
+}
+*/
 #profile{
     float: left;
     background-color: #ffffff;
     color: black;
-    height: 500px;
+    height: 100%;
     width: 25%;
     text-align: center;
-    
+    padding-bottom: 2%;
     
 }
 
@@ -28,14 +39,28 @@ li{
     margin: 0 0 10% 0;
 }
 
-#matches{
-    float: right;
-    width: 50%;
-    height: 500px;
+#pMatches{
+    float: left;
+    width: 25%;
+    height: 550px;
     color: black;
     background-color: #ffffff;
     text-align: center;
+    margin-left: 12.5%;
 }
+
+#matches{
+    float: right;
+    width: 25%;
+    height: 550px;
+    color: black;
+    background-color: #ffffff;
+    text-align: center;
+
+}
+
+
+
 
 .btn{
     background-color: #203647;

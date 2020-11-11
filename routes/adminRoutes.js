@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
         .then(admin => {
             if (admin.length < 1){
                 return res.status(404).json({
-                    message: 'User does not exist' 
+                    message: 'Admin does not exist' 
                 });
             }
         

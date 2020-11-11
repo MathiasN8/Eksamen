@@ -18,10 +18,24 @@
                     <li> Email: <%=user.email%> </li>
 
                 </ul>
-        <% } %>
         
-    </div>
+         <div id="knap">
+            <button class="btn" onclick="location.href='http://localhost:3000'" type="button">Log Out</button>
+        </div>
+        </br>
 
+        <!--Knap til at slette user-->
+        <form method="POST" action="http://localhost:3000/user/delete" name='slet' role="form" enctype="application/json" id="slet">
+        <div >
+            <input type="text" value='<%= user._id %>' name="id" style="display: none;">
+            <input type="submit" class="btn" value="Delete">
+        </div>
+        </form>
+
+        <% } %>
+
+    </div>
+   
     <div id='matches'>
         <h2>Matches?</h2>
     </div>

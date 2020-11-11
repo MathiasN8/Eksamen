@@ -106,7 +106,8 @@ router.put("/:id", function(req,res){
 //Delete a user
 router.delete("/:id", function(req,res){
     const id = req.params.id;
-    userSchema.remove({_id: id}).then(result =>{
+    userSchema.remove({_id: id})
+    .then(result =>{
         res.status(200).json(result);
     })
     .catch(err => {

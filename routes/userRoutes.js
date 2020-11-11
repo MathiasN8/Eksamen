@@ -75,8 +75,28 @@ router.post('/login', (req, res) => {
         });
 });
 
-
 //Skal kunne slet sin egen profil
-//router.delete()
+router.post('/delete', (req, res) =>{
+    //User.deleteOne({_id: req.body._id})
+    User.find({_id: req.body.id})
+    .then(result =>{
+        if(result.length < 1){
+            return res.status(404).json({
+                message: 'User does not exist' 
+            }); 
+        }
+        User.deleteOne({_id: req.body.id})
+        .then(user =>{
+            res.json({Message: 'User deleted', user: user})
+        })
+        
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+});
 
 module.exports = router;

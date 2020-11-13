@@ -13,16 +13,24 @@
         <h2>User List</h2>
         
         <% if (ul) { %>
+            
+                <h3>User 1</h3>
+                <ul>
+                    <li> ID: <%=ul[0].id%> </li>
+                    <li> Name: <%=ul[0].name%> </li>
+                    <li> Age: <%=ul[0].age%> </li>
+                    <li> Interest: <%=ul[0].interest%> </li>
+                    <li> Email: <%=ul[0].email%> </li>
+                    <li> Password: <%=ul[0].password%> </li>
+                </ul>
 
-            <h3>User 1</h3>
-            <ul>
-                <li> ID: <%=ul[0].id%> </li>
-                <li> Name: <%=ul[0].name%> </li>
-                <li> Age: <%=ul[0].age%> </li>
-                <li> Interest: <%=ul[0].interest%> </li>
-                <li> Email: <%=ul[0].email%> </li>
-                <li> Password: <%=ul[0].password%> </li>
-            </ul>
+                <form class="slet2" method="POST" action="http://localhost:3000/admin/Delete" name='slet' role="form" enctype="application/json">
+                    <div>
+                        <input type="text" value='' name="id" style="display: none;">
+                        <input type="submit" class="slet" value="Delete User 1">
+                    </div>
+                </form>
+             
 
             <h3>User 2</h3>
             <ul>
@@ -33,6 +41,13 @@
                 <li> Email: <%=ul[1].email%> </li>
                 <li> Password: <%=ul[1].password%> </li>
             </ul>
+
+            <form class="slet2" method="POST" action="http://localhost:3000/admin/Delete" name='slet' role="form" enctype="application/json">
+                <div>
+                    <input type="text" value='' name="id" style="display: none;">
+                    <input type="submit" class="slet" value="Delete User 2">
+                </div>
+            </form>
             
             <h3>User 3</h3>
             <ul>
@@ -44,6 +59,12 @@
                 <li> Password: <%=ul[2].password%> </li>
             </ul>
 
+            <form class="slet2" method="POST" action="http://localhost:3000/admin/Delete" name='slet' role="form" enctype="application/json">
+                <div>
+                    <input type="text" value='' name="id" style="display: none;">
+                    <input type="submit" class="slet" value="Delete User 3">
+                </div>
+            </form>
             
         <% } %>
 

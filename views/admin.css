@@ -4,16 +4,17 @@ h1{
 }
 
 body{
-    font-family: Arial;
-    background-color: #203647;
+    font-family: sans-serif;
+    background-image: url('image/background.jpg');
+    background-size: cover;
+
     color: #ffffff;
-    
 }
 
 #list{
     margin: auto;
-    background-color: #ffffff;
-    color: black;
+    background: rgba(0, 0, 0, 0.74);
+    color: #ffffff;
     height: 100%;
     width: 60%;
     text-align: center;
@@ -26,3 +27,23 @@ ul{
     text-align: left; 
         
 }
+
+.slet{
+    background: #c91414a1;
+    color: #ffffff;
+    width: 20%;
+    border: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.slet:hover, .slet:focus, .slet:active{
+    /* box-shadow: 0 0 10px rgb(204, 20, 20);*/
+     -webkit-transform: scale(1.1);
+     transform: scale(1.05);
+ }

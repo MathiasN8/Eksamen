@@ -1,4 +1,11 @@
 
+@font-face {
+
+    font-family: "Papyrus";
+    src: url("./font/PAPYRUS.TTF");
+
+}
+
 body{
     font-family: sans-serif;
     background-image: url('image/background.jpg');
@@ -6,12 +13,12 @@ body{
 
     color: #ffffff;
 }
+
 h1{
     text-align: center;
     color:  #ffffff ;
 
 }
-
 
 .overLay{
     background: #0000002c;

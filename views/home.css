@@ -4,8 +4,9 @@ h1{
 }
 
 body{
-    font-family: Arial;
-    background-color: #203647;
+    font-family: sans-serif;
+    background-image: url('image/background.jpg');
+    background-size: cover;
     color: #ffffff;
 }
 /*
@@ -22,8 +23,8 @@ body{
 */
 #profile{
     float: left;
-    background-color: #ffffff;
-    color: black;
+    background: rgba(219, 211, 211, 0.897);
+    color: rgb(255, 255, 255);
     height: 100%;
     width: 25%;
     text-align: center;
@@ -63,12 +64,12 @@ li{
 
 
 .btn{
-    background-color: #203647;
+    background: #c91414a1;
+    color: #ffffff;
     height: 45px;
     width: 90%;
     margin: auto;
     text-align: center;
-    color: white;
     cursor: pointer;
     border: thin;
     font-size: larger;

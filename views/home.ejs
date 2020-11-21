@@ -11,53 +11,89 @@
     
     <div id="box">
         <div id="profile"> 
+            <form method="POST" action="http://localhost:3000/user/update" name="update" role="form" enctype="application/json"></form>
+            
             <% if (user) { %>
-                <h2><%= user.name %></h2>
-                <ul>
-                    <label>Age:</label>
-                    <input type="number" value="<%=user.age%>">
-                </br>
-                </br>
-                    <label>Interest:</label>
-                    <input type="text" value="<%=user.interest%>">
-                </br>
-                </br>
-                    <label>Email:</label>
-                    <input type="text" value="<%=user.email%>">
-                </br>
-                </br>
-                    <li> Age: <%=user.age%> </li>
-                    <li> Interest: <%=user.interest%> </li>
-                    <li> Email: <%=user.email%> </li>
+                    <h2><%= user.name %></h2>
+                    <ul>
+                        <label>ID:</label>
+                        <input name="id" type="text" value="<%=user.id%>">
+                    </br>
+                    </br>
+                        <label>Age:</label>
+                        <input name="age" type="number" value="<%=user.age%>">
+                    </br>
+                    </br>
+                        <label>Interest:</label>
+                        <input name="interest" type="text" value="<%=user.interest%>">
+                    </br>
+                    </br>
+                        <label>Email:</label>
+                        <input name="email" type="text" value="<%=user.email%>">
+                    </br>
+                    <br>
+            
+                    <!--
+                    </br>
+                        <li> Age: <%=user.age%> </li>
+                        <li> Interest: <%=user.interest%> </li>
+                        <li> Email: <%=user.email%> </li>
 
-                </ul>
-
-                <!--Opdate user info button-->
-                <div> <!--https://docs.mongodb.com/manual/reference/method/db.collection.update/-->
-                    <button class="btn" onclick="location.href='http://localhost:3000/user/login'" type="button">Update Profile</button>
-                </div> </br>
-
-
-                <!--Log out button-->
-                <div>
-                    <button class="btn" onclick="location.href='http://localhost:3000'" type="button">Log Out</button>
-                </div> </br>
+                    </ul>
+                        -->
+                    <!--Opdate user info button-->
                 
+                    <div>
+                        <input type="submit" class="btn" value="Update">
+                    </div> <br>
+            </form>
 
-                <!--Delete user button-->
-                <form method="POST" action="http://localhost:3000/user/delete" name='slet' role="form" enctype="application/json" id="slet">
-                    <div >
-                        <input type="text" value='<%= user._id %>' name="id" style="display: none;">
-                        <input type="submit" class="btn" value="Delete">
-                    </div>
-                </form>
+                    <!--Log out button-->
+                    <div>
+                        <button class="btn" onclick="location.href='http://localhost:3000'" type="button">Log Out</button>
+                    </div> </br>
+                    
 
-            <% } %>
+                    <!--Delete user button-->
+                    <form method="POST" action="http://localhost:3000/user/delete" name='slet' role="form" enctype="application/json" id="slet">
+                        <div >
+                            <input type="text" value='<%= user._id %>' name="id" style="display: none;">
+                            <input type="submit" class="btn" value="Delete">
+                        </div>
+                    </form>
 
+                <% } %>
+            
         </div>
 
         <div id='pMatches'>
             <h2>Potential Matches</h2>
+            <div id="list">
+                <% if (ul) { %>
+                    <h3><%=ul[0].name%></h3>
+                    <ul>
+                        <li> Age: <%=ul[0].age%> </li>
+                        <li> Interest: <%=ul[0].interest%> </li>
+                        <li> Email: <%=ul[0].email%> </li>
+                    </ul>
+
+
+                    <h3><%=ul[1].name%></h3>
+                    <ul>
+                        <li> Age: <%=ul[1].age%> </li>
+                        <li> Interest: <%=ul[1].interest%> </li>
+                        <li> Email: <%=ul[1].email%> </li>
+                    </ul>
+                    
+                    <h3><%=ul[2].name%></h3>
+                    <ul>
+                        <li> Age: <%=ul[2].age%> </li>
+                        <li> Interest: <%=ul[2].interest%> </li>
+                        <li> Email: <%=ul[2].email%> </li>
+                    </ul>
+                    
+                <% } %>
+            </div>
         </div>
     
         <div id='matches'>

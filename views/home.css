@@ -43,11 +43,22 @@ li{
 #pMatches{
     float: left;
     width: 25%;
-    height: 550px;
+    height: 100%;
     color: black;
     background-color: #ffffff;
     text-align: center;
     margin-left: 12.5%;
+    margin-bottom: 10px;
+
+    
+}
+
+#list ul{
+    list-style: none;
+    padding-left: 0;
+    display: inline-block; 
+    text-align: left; 
+        
 }
 
 #matches{

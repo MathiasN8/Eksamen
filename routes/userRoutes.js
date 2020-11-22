@@ -29,7 +29,7 @@ router.post('/signup', function(req, res){
             user.save()
             .then(result => {
                 if (result) {
-                    res.status(200).json(result);
+                    res.render('index')
                 
                 } else {
                     res.status(404).json({message: "fejl i oprettelse"});
@@ -81,7 +81,14 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/update', function(req, res){
-    User.updateOne({_id: req.body.id}, {$set: User})
+    var updateUser = {
+        name: req.body.name,
+        age: req.body.age,
+        interest: req.body.interest,
+        email: req.body.email,
+        password: req.body.password
+    }
+    User.updateOne({_id: req.body.id}, {$set: updateUser})
     .then(result =>{
         res.render('home', {result: result});
     })

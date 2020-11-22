@@ -48,36 +48,38 @@
                     <form method="POST" action="http://localhost:3000/user/update" name="updateForm" role="form" enctype="application/json"> 
                         
                         <h2>Update Profile</h2>
-
-                        <input name='id' type="text" value="Indtast ID"><br>
+                        <div class="input1">
+                            <input name='id' type="text" placeholder="Insert ID" required><br>
+                        </div>
+                        <br>
 
                             <label for="name">Name</label>
                         <div class="input1">
-                            <input name='name' id= "name" type="text"><br>
+                            <input name='name' id= "name" type="text" placeholder="Change name" required><br>
                         </div>
 
                         <br>
                             <label for="Age">Age</label>
                         <div class="input1">
-                            <input name='age' id= "Age" type="number"><br>
+                            <input name='age' id= "Age" type="number" placeholder="Change age" required><br>
                         </div>
 
                         <br>
                             <label for="Interest">Interest</label>
                         <div class="input1">
-                            <input name='interest' id= "interest" type="text"><br>
+                            <input name='interest' id= "interest" type="text" placeholder="Change interest" required><br>
                         </div>
 
                         <br>
                             <label for="email">Email</label>
                         <div class="input1">
-                            <input name='email' id= "email" type="email" ><br>
+                            <input name='email' id= "email" type="email" placeholder="Change email" required><br>
                         </div>
 
                         <br>    
                             <label for="password">Password</label>
                         <div class="input1">
-                            <input name='password' id= "password" type="password"><br>
+                            <input name='password' id= "password" type="password" placeholder="Change password" required><br>
                         </div>
                         <br>
                         

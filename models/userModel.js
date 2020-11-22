@@ -47,4 +47,3 @@ btn.addEventListener("click", function storeInput(){
     }
 });
 */
-

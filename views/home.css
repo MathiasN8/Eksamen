@@ -23,13 +23,12 @@ body{
 */
 #profile{
     float: left;
-    background: rgba(219, 211, 211, 0.897);
+    background: rgba(0, 0, 0, 0.856);
     color: rgb(255, 255, 255);
     height: 100%;
     width: 25%;
     text-align: center;
     padding-bottom: 2%;
-    
 }
 
 ul{
@@ -39,18 +38,34 @@ ul{
 li{
     margin: 0 0 10% 0;
 }
+.input1{
+    width:  90%;
+    height: 25px;
+    border-bottom: 1px solid #ffffff;
+    background: none;
+    margin-left: 5%;
+
+}
+
+.input1 input{
+    border: none;
+    width: 100%;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    text-align: center;
+}
 
 #pMatches{
     float: left;
     width: 25%;
     height: 100%;
-    color: black;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color:  rgba(0, 0, 0, 0.856);
     text-align: center;
     margin-left: 12.5%;
     margin-bottom: 10px;
 
-    
 }
 
 #list ul{
@@ -65,8 +80,8 @@ li{
     float: right;
     width: 25%;
     height: 550px;
-    color: black;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.856);
     text-align: center;
 
 }

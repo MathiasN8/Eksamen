@@ -90,7 +90,7 @@ router.post('/update', function(req, res){
     }
     User.updateOne({_id: req.body.id}, {$set: updateUser})
     .then(result =>{
-        res.render('home', {result: result});
+        res.render('index', result)
     })
     .catch(err => {
         console.log(err);

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//opretter et skema for min user med følgende 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,

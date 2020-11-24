@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-// serves up static CSS files 
+// viser ccs filer som static
 router.use(express.static( './views/'));
 
 const User = require('../models/userModel');
 
-//Create a new user in the sign up Div
+//Laver en ny user i sign up diven
 router.post('/signup', function(req, res){
-    //Looks if the email is already in use
+    //Ser om email allerede bliver brugt
     User.find({ email: req.body.email})
     .then(user =>{
         if (user.length >= 1){
@@ -17,7 +17,7 @@ router.post('/signup', function(req, res){
                 message: 'Email exists'
             });
         } else{
-            //creates user from the userschema
+            //Opretter User ud fra mongo Schema 
             const user = new User({
                 _id: mongoose.Types.ObjectId(),
                 name: req.body.name,
@@ -80,6 +80,7 @@ router.post('/login', (req, res) => {
         });
 });
 
+//Updatere user 
 router.post('/update', function(req, res){
     var updateUser = {
         name: req.body.name,
@@ -88,12 +89,12 @@ router.post('/update', function(req, res){
         email: req.body.email,
         password: req.body.password
     }
+    //Leder efter ID man taster ind, 
     User.updateOne({_id: req.body.id}, {$set: updateUser})
     .then(result =>{
         res.render('index', result)
     })
     .catch(err => {
-        console.log(err);
         res.status(500).json({
             error: err
         });
@@ -164,7 +165,6 @@ router.post('/delete', (req, res) =>{
         
     })
     .catch(err => {
-        console.log(err);
         res.status(500).json({
             error: err
         });

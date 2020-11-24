@@ -4,14 +4,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-// Set the view engine to ejs
+// Opretter EJS som view engine 
 app.set('view engine', 'ejs');
 
 //Routes
 const adminRoutes = require('./routes/adminRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-//connect to database
+//connect til databasen
 mongoose.connect('mongodb+srv://Matti:famnielsen@restapi.rsmlk.mongodb.net/RestApi?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -21,7 +21,7 @@ mongoose.connect('mongodb+srv://Matti:famnielsen@restapi.rsmlk.mongodb.net/RestA
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-//initialize routes
+//Starte mine routes op
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes); 
 
@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-//Server running on port 3000
+//Server kører på port 3000
 app.listen(3000, function(){
     console.log("Server kører");
 });

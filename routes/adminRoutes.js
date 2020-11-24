@@ -8,9 +8,9 @@ const userSchema = require('../models/userModel');
 const adminModel = require('../models/adminModel');
 
 
-//Admin see list of users
+//Se en liste over alle users
 router.post('/', (req, res) => {
-    //checks if admin exist
+    //checker om admin findes
     adminModel.find({ name: req.body.name})
         .then(admin => {
             if (admin.length < 1){
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
             }
         
             if(admin[0].password == req.body.password){
-                //renders admin html with a list of users
+                //renders admin html med en liste over alle users
                 userSchema.find()
                 .then(docs => {
                     res.render('admin', {'ul': docs});
@@ -97,26 +97,5 @@ router.get("/:userId", function(req,res,){
         });    
 });
 
-
-//Update a user. /: takes the id of the user ---ID--https://youtu.be/WDrU305J1yw?list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q&t=1749
-router.put("/:id", function(req,res){
-    res.send("Put");
-});
-
-//Delete a user
-router.delete("/:id", function(req,res){
-    const id = req.params.id;
-    userSchema.remove({_id: id})
-    .then(result =>{
-        res.status(200).json(result);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
-        });
-    });
-    
-});
 
 module.exports = router;

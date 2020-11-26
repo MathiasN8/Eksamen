@@ -76,6 +76,45 @@ li{
         
 }
 
+.likeBnt{
+    width: 40%;
+    color: #ffffff;
+    background: #29c914a1;
+    cursor: pointer;
+    border: thin;
+    height: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.likeBnt:hover, .likeBnt:focus, .likeBnt:active{
+    box-shadow: 0 0 20px rgba(99, 100, 100, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.05);
+}
+.dislikeBnt{
+    width: 40%;
+    color: #ffffff;
+    background: #c91414a1;
+    cursor: pointer;
+    border: thin;
+    height: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.dislikeBnt:hover, .dislikeBnt:focus, .dislikeBnt:active{
+    box-shadow: 0 0 20px rgba(99, 100, 100, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.05);
+}
+
 #matches{
     float: right;
     width: 25%;
@@ -83,7 +122,6 @@ li{
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.856);
     text-align: center;
-
 }
 
 

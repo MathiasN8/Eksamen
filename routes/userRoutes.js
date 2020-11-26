@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const { insertMany } = require('../models/userModel');
 
 // viser ccs filer som static
 router.use(express.static( './views/'));
@@ -30,6 +31,7 @@ router.post('/signup', function(req, res){
             .then(result => {
                 if (result) {
                     res.render('index')
+                    
                 
                 } else {
                     res.status(404).json({message: "fejl i oprettelse"});
@@ -59,11 +61,12 @@ router.post('/login', (req, res) => {
         
             if(users[0].password == req.body.password){
                 //res.status(404).json(users[0]);
-                User.find()
+                //Finder brugerne, så man kan se dem under potentiele mathces
+                //Bruger metoden $ne = Not equal. Der viser alle undtagen den person der er logget ind
+                User.find({ email:{$ne: req.body.email}})
                 .then(list => {
                     res.render('home', { 'user': users[0], 'ul': list});
                 })
-                
             } 
             
             else {
@@ -169,6 +172,12 @@ router.post('/delete', (req, res) =>{
             error: err
         });
     });
+});
+
+//Like funktionalitet
+router.post('/like', (req, res) =>{
+    User.insertMany()
+   res.render('home') 
 });
 
 module.exports = router;

@@ -12,83 +12,92 @@
     <div id="box">
         <div id="profile"> 
             
-                <% if (user) { %>
-                    <h2><%= user.name %></h2>
-  
-                    <ul>
-                        </br>
-                            <li> Age: <%=user.age%> </li>
-                            <li> Interest: <%=user.interest%> </li>
-                            <li> Email: <%=user.email%> </li>
-                            <li> ID: <%=user.id%> </li>
+            <% if (user) { %>
+                <h2><%= user.name %></h2>
 
-                    </ul>
-                    
-
-                    <!--Log out button-->
-                    
-                    <div>
-
+                <ul>
                     </br>
-                        <button class="btn" onclick="location.href='http://localhost:3000'" type="button">Log Out</button>
-                    </div> </br>
-                    
+                        <li> Age: <%=user.age%> </li>
+                        <li> Interest: <%=user.interest%> </li>
+                        <li> Email: <%=user.email%> </li>
+                        <li> ID: <%=user.id%> </li>
 
-                    <!--Delete user button-->
-                    <form method="POST" action="http://localhost:3000/user/delete" name='slet' role="form" enctype="application/json" id="slet">
-                        <div >
-                            <input type="text" value='<%= user._id %>' name="id" style="display: none;">
-                            <input type="submit" class="btn" value="Delete">
-                        </div>
-                    </form>
-                <% } %>
+                </ul>
+                
 
+                <!--Log out button-->
+                
                 <div>
-                    <!--Update form-->
-                    <form method="POST" action="http://localhost:3000/user/update" name="updateForm" role="form" enctype="application/json"> 
-                        
-                        <h2>Update Profile</h2>
-                        <div class="input1">
-                            <input name='id' type="text" placeholder="Insert ID" required><br>
-                        </div>
-                        <br>
 
-                            <label for="name">Name</label>
-                        <div class="input1">
-                            <input name='name' type="text" placeholder="Change name" required><br>
-                        </div>
+                </br>
+                    <button class="btn" onclick="location.href='http://localhost:3000'" type="button">Log Out</button>
+                </div> </br>
+                
 
-                        <br>
-                            <label for="Age">Age</label>
-                        <div class="input1">
-                            <input name='age'  type="number" placeholder="Change age" required><br>
-                        </div>
+                <!--Delete user button-->
+                <form method="POST" action="http://localhost:3000/user/delete" name='slet' role="form" enctype="application/json" id="slet">
+                    <div >
+                        <input type="text" value='<%= user._id %>' name="id" style="display: none;">
+                        <input type="submit" class="btn" value="Delete">
+                    </div>
+                </form>
+            <% } %>
 
-                        <br>
-                            <label for="Interest">Interest</label>
-                        <div class="input1">
-                            <input name='interest'  type="text" placeholder="Change interest" required><br>
-                        </div>
+            <div>
+                <!--Update form-->
+                <form method="POST" action="http://localhost:3000/user/update" name="updateForm" role="form" enctype="application/json"> 
+                    
+                    <h2>Update Profile</h2>
+                    <div class="input1">
+                        <input name='id' type="text" placeholder="Insert ID" required><br>
+                    </div>
+                    <br>
 
-                        <br>
-                            <label for="email">Email</label>
-                        <div class="input1">
-                            <input name='email'  type="email" placeholder="Change email" required><br>
-                        </div>
+                        <label for="name">Name</label>
+                    <div class="input1">
+                        <input name='name' type="text" placeholder="Change name" required><br>
+                    </div>
 
-                        <br>    
-                            <label for="password">Password</label>
-                        <div class="input1">
-                            <input name='password' type="password" placeholder="Change password" required><br>
-                        </div>
-                        <br>
-                        
-                        
-                        <input type="submit" class="btn" value="Update">
-                    </form>
-                </div>
+                    <br>
+                        <label for="Age">Age</label>
+                    <div class="input1">
+                        <input name='age'  type="number" placeholder="Change age" required><br>
+                    </div>
+
+                    <br>
+                        <label for="Interest">Interest</label>
+                    <div class="input1">
+                        <input name='interest'  type="text" placeholder="Change interest" required><br>
+                    </div>
+
+                    <br>
+                        <label for="email">Email</label>
+                    <div class="input1">
+                        <input name='email'  type="email" placeholder="Change email" required><br>
+                    </div>
+
+                    <br>    
+                        <label for="password">Password</label>
+                    <div class="input1">
+                        <input name='password' type="password" placeholder="Change password" required><br>
+                    </div>
+                    <br>
+                    
+                    
+                    <input type="submit" class="btn" value="Update">
+                </form>
+            </div>
 
         </div>      
+
+        <!--Match knap -- midt div -->
+        <div id="matchBtn">
+            <form method="POST" action="http://localhost:3000/user/matches" name="matchForm" role="form" enctype="application/json"> 
+                <!--<input type="submit" id="knap" value="Matches"> -->
+                <button type="submit" id="knap">Matches</button>
+            </form>
+        </div>
+
               <!--
                     <form method="POST" action="http://localhost:3000/user/update" name="update" role="form" enctype="application/json">
             
@@ -134,62 +143,24 @@
                 <h2>Potential Matches</h2>
 
                 <div id="list">
-                    <% if (ul) { %>
-                        <h3><%=ul[0].name%></h3>
-                        <ul>
-                            <li> Age: <%=ul[0].age%> </li>
-                            <li> Interest: <%=ul[0].interest%> </li>
-                            <li> Email: <%=ul[0].email%> </li>
-                        </ul>
-                    </br>
-
-                        <input type="submit" class="likeBnt" value="Like">
-                        <input type="submit" class="dislikeBnt" value="Dislike">
-
-                        <h3><%=ul[1].name%></h3>
-                        <ul>
-                            <li> Age: <%=ul[1].age%> </li>
-                            <li> Interest: <%=ul[1].interest%> </li>
-                            <li> Email: <%=ul[1].email%> </li>
-                        </ul>
-                    </br>
+                    <% ul.forEach(function (ul) { %>
+                            <h3><%= ul.name %></h3>
+                            <ul>
+                                <li> Age: <%=ul.age%> </li>
+                                <li> Interest: <%=ul.interest%> </li>
+                                <li> Email: <%=ul.email%> </li>
+                            </ul>  
+                              <br>
                         <button type="button" class="likeBnt"> Like </button>
-                        <button type="button" class="dislikeBnt"> Dislike </button>
-                        
-                        <h3><%=ul[2].name%></h3>
-                        <ul>
-                            <li> Age: <%=ul[2].age%> </li>
-                            <li> Interest: <%=ul[2].interest%> </li>
-                            <li> Email: <%=ul[2].email%> </li>
-                        </ul>
-                    </br>
-                        <button type="button" class="likeBnt"> Like </button>
-                        <button type="button" class="dislikeBnt"> Dislike </button>
+                        <button type="button" class="dislikeBnt"> Dislike </button>                           
+                    <% }) %>
+                          
 
-                        <h3><%=ul[3].name%></h3>
-                        <ul>
-                            <li> Age: <%=ul[3].age%> </li>
-                            <li> Interest: <%=ul[3].interest%> </li>
-                            <li> Email: <%=ul[3].email%> </li>
-                        </ul>
-                    </br>
-                        <button type="button" class="likeBnt"> Like </button>
-                        <button type="button" class="dislikeBnt"> Dislike </button>
-
-                    <% } %>
+                    
                 </div>
-            </form>
+            
         </div>
     
-        <div id='matches'>
-            <h2>Matches</h2>
-            <div id="list">
-                <% if (matches) { %>
-                   
-
-                <% } %>
-            </div>
-        </div>
 
     </div>
     

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches</title>
+    <link rel="stylesheet" href="match.css">
+</head>
+<body>
+    <div>
+        <h2>Matches</h2>
+        <div>
+           
+            <% match.forEach(function (match) { %>
+                <table>
+                    <tr>
+                        <td>Name: <%=match.name%></td>
+                        <td>Age: <%=match.age%></td>
+                        <td>interest: <%=match.interest%></td>
+                    </tr>
+                    
+                </table>
+
+            <% }) %>
+
+        </div>
+    </div>
+    
+</body>
+</html>

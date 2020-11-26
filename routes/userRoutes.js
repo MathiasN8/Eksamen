@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const { insertMany } = require('../models/userModel');
+
 
 // viser ccs filer som static
 router.use(express.static( './views/'));
 
 const User = require('../models/userModel');
+const match = require('../models/matchModel');
 
 //Laver en ny user i sign up diven
 router.post('/signup', function(req, res){
@@ -103,53 +104,7 @@ router.post('/update', function(req, res){
         });
     });
 });
-// Opdatere sin egen bruger https://docs.mongodb.com/manual/reference/method/db.collection.update/
-/*
-router.post('/update', function(req, res){
-    //Looks if the email is already in use
-    User.find({_id: req.body.id})
-    .then(user =>{
-        if (user.length >= 1){
-            return res.status(409).json({
-                message: 'Email exists'
-            });
-        } else {
-            ///mangler
-            user.save()
-            .then(result => {
-                if (result) {
-                    //res.status(200).json(result);
-                    res.render('home', {result: result});
-                } else {
-                    res.status(404).json({message: "fejl i oprettelse"});
-                }
-            })
-            .catch(err => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).json({
-                        error: err
-                    });
-                }
-            });
 
-        }
-
-    });
-});
-*/
-/*
-router.post('/update', (req, res) =>{
-    User.updateOne({_id: req.body.id}),
-    { $set:
-        {
-            age: req.body.age,
-            interest: req.body.age,
-            email: req.body.email
-        }
-    }
-});
-*/
 
 //Skal kunne slet sin egen profil
 router.post('/delete', (req, res) =>{
@@ -176,8 +131,44 @@ router.post('/delete', (req, res) =>{
 
 //Like funktionalitet
 router.post('/like', (req, res) =>{
-    User.insertMany()
-   res.render('home') 
+    /*
+    var test = {
+        name: req.body.name,
+        age: 21,
+        interest: 'Test'
+    }
+    match.insertMany({_id: req.body.id, test})
+    */
+   //User.findOne({_id: req.body.id})
+    match.insertMany({
+        name: req.body.name,
+        age: req.body.age,
+        interest: req.body.interest
+
+    })
+    .then(insert =>{
+        res.send(insert);
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
 });
+
+//Se alle brugerens matches
+router.post('/matches', (req, res) =>{
+    match.find()
+        .then(matches => {
+            res.render('match', {'match': matches});
+        })
+        .catch( err => {
+            res.status(500).json({
+            error: err
+            });
+        });
+
+})
+
 
 module.exports = router;

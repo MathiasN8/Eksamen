@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
+
 //const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-// Opretter EJS som view engine 
-app.set('view engine', 'ejs');
-
 //Routes
 const adminRoutes = require('./routes/adminRoutes');
 const userRoutes = require('./routes/userRoutes');
+
+// Opretter EJS som view engine 
+app.set('view engine', 'ejs');
 
 //connect til databasen
 mongoose.connect('mongodb+srv://Matti:famnielsen@restapi.rsmlk.mongodb.net/RestApi?retryWrites=true&w=majority', {

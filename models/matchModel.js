@@ -7,4 +7,4 @@ const matchSchema = mongoose.Schema({
     interest: String
 });
 
-module.exports = mongoose.model('Matchs', matchSchema);
+module.exports = mongoose.model('Matches', matchSchema);

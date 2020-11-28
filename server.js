@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes); 
 
+
 //Show index.html on localhost
 //app.use(express.static(path.resolve(__dirname, 'views')));
 app.use(express.static(__dirname + '/views/'));

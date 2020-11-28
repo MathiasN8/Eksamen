@@ -1,11 +1,13 @@
 h1{
     text-align: center;
     color:  #ffffff ;
+    letter-spacing: 5px;
 }
 
 body{
     font-family: sans-serif;
-    background-image: url('image/background.jpg');
+    /*background-image: url('image/background.jpg');*/
+    background-color: #353b48;
     background-size: cover;
     color: #ffffff;
 }
@@ -24,7 +26,7 @@ body{
 /* Venstre div */
 #profile{
     float: left;
-    background: rgba(0, 0, 0, 0.856);
+    background: rgba(0, 0, 0, 0.438);
     color: rgb(255, 255, 255);
     height: 100%;
     width: 25%;
@@ -71,7 +73,8 @@ li{
     margin-top: 200px;
     border: 3px solid #db3434;
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.856);
+    /*background: rgba(0, 0, 0, 0.856);*/
+    background-color: #353b48;
     padding: 10px 20px;
     font-size: x-large;
     font-family: Arial;
@@ -111,7 +114,7 @@ li{
     width: 25%;
     height: 100%;
     color: #ffffff;
-    background-color:  rgba(0, 0, 0, 0.856);
+    background-color:  rgba(0, 0, 0, 0.438);
     text-align: center;
     margin-bottom: 10px;
 

@@ -9,8 +9,10 @@ router.use(express.static( './views/'));
 const User = require('../models/userModel');
 const match = require('../models/matchModel');
 
+
 //Laver en ny user i sign up diven
 router.post('/signup', function(req, res){
+
     //Ser om email allerede bliver brugt
     User.find({ email: req.body.email})
     .then(user =>{
@@ -19,6 +21,7 @@ router.post('/signup', function(req, res){
                 message: 'Email exists'
             });
         } else{
+
             //Opretter User ud fra mongo Schema 
             const user = new User({
                 _id: mongoose.Types.ObjectId(),
@@ -32,8 +35,6 @@ router.post('/signup', function(req, res){
             .then(result => {
                 if (result) {
                     res.render('index')
-                    
-                
                 } else {
                     res.status(404).json({message: "fejl i oprettelse"});
                 }
@@ -146,9 +147,9 @@ router.post('/like', (req, res) =>{
         interest: req.body.interest
 
     })
-    .then(insert =>{
-        res.send(insert);
-    })
+    .then(
+        res.send('It is a match!!!!')
+    )
     .catch(err => {
         res.status(500).json({
             error: err
@@ -156,18 +157,39 @@ router.post('/like', (req, res) =>{
     });
 });
 
+// Dislike funktionalitet
+router.post('/dislike', (req, res) =>{
+    res.send('It is not a match');
+});
+
 //Se alle brugerens matches
 router.post('/matches', (req, res) =>{
     match.find()
-        .then(matches => {
-            res.render('match', {'match': matches});
-        })
-        .catch( err => {
-            res.status(500).json({
-            error: err
-            });
+    .then(matches => {
+        res.render('match', {'match': matches});
+    })
+    .catch( err => {
+        res.status(500).json({
+        error: err
         });
+    });
+})
 
+// Slet sine matches
+router.post('/matches/delete', (req, res) =>{
+    match.find({_id: req.body.id})
+
+    match.deleteOne({_id: req.body.id})
+    .then( result =>{
+        //res.render('match', {match: result})
+    })
+        
+    
+    .catch( err => {
+        res.status(500).json({
+        error: err
+        });
+    });
 })
 
 

@@ -7,20 +7,28 @@
     <link rel="stylesheet" href="match.css">
 </head>
 <body>
-    <div>
-        <h2>Matches</h2>
-        <div>
+    
+    <h1>Matches</h1>
+
+    <div id="container">
+        <div id="table">
            
             <% match.forEach(function (match) { %>
-                <table>
-                    <tr>
-                        <td>Name: <%=match.name%></td>
-                        <td>Age: <%=match.age%></td>
-                        <td>interest: <%=match.interest%></td>
-                    </tr>
-                    
-                </table>
+                <form method="POST" action= "http://localhost:3000/user/matches/delete" name="deleteMatches" role="form" enctype="application/json">
+                    <table>
+                        <tr>
+                            <td>Name: <%=match.name%></td>
+                            <td>Age: <%=match.age%></td>
+                            <td>interest: <%=match.interest%></td>
 
+                            <input type="text" value='<%= match.id %>' name="id" style="display: none;">
+                            <td><button type="submit">Delete</button></td>
+
+                        </tr><br>
+                        
+                        
+                    </table>
+                </form>
             <% }) %>
 
         </div>

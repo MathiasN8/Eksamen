@@ -138,36 +138,36 @@
                 
             
 
-                    <div id='pMatches'>
-           
-                        <h2>Potential Matches</h2>
-                    
-                        <div id="list">  
-                             
-                            <% ul.forEach(function (ul) { %>
-                               <form method="POST" action= "http://localhost:3000/user/like" name="likeForm" role="form" enctype="application/json">
-                                    <h3><%= ul.name %></h3>
-                                    <ul>
-                                        <li> Age: <%=ul.age%> </li>
-                                        <li> Interest: <%=ul.interest%> </li>
-                                        <li> Email: <%=ul.email%> </li>
-                                    </ul>  
-                                      <br>
-                    
-                                    <input type="text" value='<%= ul.name %>' name="name" style="display: none;">
-                                    <input type="text" value='<%= ul.age %>' name="age" style="display: none;" >
-                                    <input type="text" value='<%= ul.interest %>' name="interest" style="display: none;" >
+            <div id='pMatches'>
+    
+                <h2>Potential Matches</h2>
+            
+                <div id="list">  
+                        
+                    <% ul.forEach(function (ul) { %>
+                        <form method="POST" action= "http://localhost:3000/user/like" name="likeForm" role="form" enctype="application/json">
+                            <h3><%= ul.name %></h3>
+                            <ul>
+                                <li> Age: <%=ul.age%> </li>
+                                <li> Interest: <%=ul.interest%> </li>
+                                <li> Email: <%=ul.email%> </li>
+                            </ul>  
+                                <br>
+                            
+                            <input type="text" value='<%= ul.name %>' name="name" style="display: none;">
+                            <input type="text" value='<%= ul.age %>' name="age" style="display: none;" >
+                            <input type="text" value='<%= ul.interest %>' name="interest" style="display: none;" >
 
-                                    <button type="submit" class="likeBnt"> Like </button>
-                                    <button type="submit" formaction="http://localhost:3000/user/dislike" class="dislikeBnt"> Dislike </button>
-                                    
-                                </form>                   
-                            <% }) %>
-                             
-                        </div>
-                    
-                    </div>
-        
+                            <button type="submit" class="likeBnt"> Like </button>
+                            <button type="submit" formaction="http://localhost:3000/user/dislike" class="dislikeBnt"> Dislike </button>
+                            
+                        </form>                   
+                    <% }) %>
+                        
+                </div>
+            
+            </div>
+
         </div>
         
     </body>

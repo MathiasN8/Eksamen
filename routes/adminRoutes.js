@@ -43,42 +43,6 @@ router.post('/', (req, res) => {
             });
         });
 });
-/* Ser liste over users
-router.get("/", function(req,res){
-    userSchema.find()
-        .then(docs => {
-            //res.status(200).json(docs);
-            res.render('admin', {'ul': docs});
-        })
-        .catch( err => {
-            res.status(500).json({
-                error: err
-            });
-        });
-});
-*/
-//add a new user
-//Skal admin ikke kunne gøre
-/*router.post("/", function(req,res){
-    const user = new userSchema({
-        _id: new mongoose.Types.ObjectId(),
-        name: req.body.name,
-        age: req.body.age
-    });
-    //save is a method provided by mongoose to use on mongoose models
-    user
-        .save()
-        .then(function(result){
-        console.log(result);
-        res.send({message: "Post", createdUser: result});
-    }) 
-    .catch(function(err){
-        console.log(err);
-    })
-    // its returning the user which is the mongoose object
-     
-}); 
-*/
 
 // Se en enkelt bruger
 router.get("/:userId", function(req,res,){

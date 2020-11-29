@@ -7,8 +7,26 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Dating app</title>
             <link rel="stylesheet" href="index.css">
-            <link rel="stulesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            <link rel="stulesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+            <script>
+                
+                window.addEventListener("DOMContentLoaded", () => {
+
+                    const form =document.getElementById('signInForm');
+                    const signInBtn = document.getElementById('signInBtn');
+                    const email = document.getElementById('signInEmail');
+                    const password = document.getElementById('signInPassword');
+
+                    signInBtn.addEventListener('submit', function(){
+                        localStorage.setItem("email", email.value);
+                        localStorage.setItem("password", password.value);
+                    })
+            
+                });
+
+            </script>
+            
         </head>
 
         <body>
@@ -16,22 +34,21 @@
                 <h1>Dating App</h1>
                 <!--User sign ip form-->
                 <div id="form1">
-                    <form method="POST" action="http://localhost:3000/user/login" name='logInForm' role="form" enctype="application/json">
+                    <form id="signInForm" method="POST" action="http://localhost:3000/user/login" name='logInForm' role="form" enctype="application/json">
                         <p id="p1">User </p>
                         
                             <label for="email">Email</label>
                         <div class="input1">  
-                            
-                            <input name='email' type="email" required>
+                            <input id="signInEmail" name='email' type="email" required>
                         </div>
                         
                         <br>
                             <label for="password">Password</label>
                         <div class="input1"> 
-                            <input name='password' type="password" required>
+                            <input id="signInPassword" name='password' type="password" required>
                         </div>
                         <br>
-                        <input type="submit" class="Btn" value="Log in">
+                        <input id="signInBtn" type="submit" class="Btn" value="Log in">
                     </form>
 
                     <!--Admin sign in form-->
@@ -99,6 +116,23 @@
            <script src="../server.js"></script>
            <script src="../models/userModel.js"></script>
 
+           <script>
+                
+            window.addEventListener("DOMContentLoaded", () => {
+
+                const form =document.getElementById('signInForm');
+                const signInBtn = document.getElementById('signInBtn');
+                const email = document.getElementById('signInEmail');
+                const password = document.getElementById('signInPassword');
+
+                signInBtn.addEventListener('click', function(){
+                    localStorage.setItem("email", email.value);
+                    localStorage.setItem("password", password.value);
+                })
+        
+            });
+
+        </script>
 
         </body>
 

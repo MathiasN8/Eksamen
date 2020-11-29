@@ -11,7 +11,7 @@ const match = require('../models/matchModel');
 
 
 //Laver en ny user i sign up diven
-router.post('/signup', function(req, res){
+router.post('/signup', (req, res) =>{
 
     //Ser om email allerede bliver brugt
     User.find({ email: req.body.email})
@@ -52,7 +52,7 @@ router.post('/signup', function(req, res){
 });
 
 //Login route. se om der er en bruger i databasen med de informationer
-router.post('/login', (req, res) => {
+router.post('/login', (req, res) =>{
     User.find({ email: req.body.email})
         .then(users => {
             if (users.length < 1){
@@ -86,7 +86,7 @@ router.post('/login', (req, res) => {
 });
 
 //Updatere user 
-router.post('/update', function(req, res){
+router.post('/update', (req, res) =>{
     var updateUser = {
         name: req.body.name,
         age: req.body.age,
@@ -105,7 +105,6 @@ router.post('/update', function(req, res){
         });
     });
 });
-
 
 //Skal kunne slet sin egen profil
 router.post('/delete', (req, res) =>{
@@ -132,15 +131,7 @@ router.post('/delete', (req, res) =>{
 
 //Like funktionalitet
 router.post('/like', (req, res) =>{
-    /*
-    var test = {
-        name: req.body.name,
-        age: 21,
-        interest: 'Test'
-    }
-    match.insertMany({_id: req.body.id, test})
-    */
-   //User.findOne({_id: req.body.id})
+   
     match.insertMany({
         name: req.body.name,
         age: req.body.age,
@@ -178,13 +169,17 @@ router.post('/matches', (req, res) =>{
 // Slet sine matches
 router.post('/matches/delete', (req, res) =>{
     match.find({_id: req.body.id})
-
+//Skal kunne gen indlæse siden 
     match.deleteOne({_id: req.body.id})
-    .then( result =>{
+    .then( 
+        match.find()
+        .then(matches => {
+            res.render('match', {'match': matches});
+        })
+        //window.location.reload()
+        //res.send('Match deleted')
         //res.render('match', {match: result})
-    })
-        
-    
+    )
     .catch( err => {
         res.status(500).json({
         error: err

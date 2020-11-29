@@ -1,7 +1,7 @@
 h1{
     text-align: center;
     color:  #ffffff ;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
 }
 
 body{
@@ -32,6 +32,7 @@ body{
     width: 25%;
     text-align: center;
     padding-bottom: 2%;
+    margin-left: 5%;
 }
 
 ul{
@@ -62,7 +63,7 @@ li{
 /* Midt div*/
 #matchBtn{
     float: left;
-    margin-left: 15%;
+    margin-left: 10%;
     text-align: center;
     width: 20%;
     height: 500px;
@@ -102,7 +103,7 @@ li{
 }
 #knap::before{
     top: 0;
-    border-radius: 0 0 50% 50%;
+    border-radius: 0 0 10% 10%;
 }
 #knap:hover::before{
     height: 180%;
@@ -117,6 +118,7 @@ li{
     background-color:  rgba(0, 0, 0, 0.438);
     text-align: center;
     margin-bottom: 10px;
+    margin-right: 5%;
 
 }
 

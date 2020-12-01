@@ -7,7 +7,9 @@ const userSchema = mongoose.Schema({
     age: Number,
     interest: String,
     email: String,
-    password: String
+    password: String,
+    likes: Array,
+    matches: Array
 });
 
 module.exports = mongoose.model('User', userSchema);

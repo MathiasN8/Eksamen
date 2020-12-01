@@ -17,9 +17,9 @@
                 <form method="POST" action= "http://localhost:3000/user/matches/delete" name="deleteMatches" role="form" enctype="application/json">
                     <table>
                         <tr>
-                            <td>Name: <%=match.name%></td>
-                            <td>Age: <%=match.age%></td>
-                            <td>Interest: <%=match.interest%></td>
+                            <td>Name: <%=match%></td>
+                            
+                           
 
                             <input type="text" value='<%= match.id %>' name="id" style="display: none;">
                             <td><button type="submit">Delete</button></td>
@@ -29,7 +29,7 @@
                     </table>
                 </form>
             <% }) %>
-
+            
         </div>
     </div>
     <div>

@@ -129,6 +129,9 @@ li{
     text-align: left; 
         
 }
+#list{
+    margin-bottom: 5%;
+}
 
 .likeBnt{
     width: 40%;

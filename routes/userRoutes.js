@@ -129,10 +129,40 @@ router.post('/delete', (req, res) =>{
     });
 });
 
+
 //Like funktionalitet
-router.post('/like', (req, res) =>{
+router.post('/like/:id', async (req, res) =>{
+
+    var firstId = req.params.id  // First user = den person der liker
+    var secondId = req.body.id  // Second user = den person der bliver liked
+    
+    // Smider den user2 ID ind in den user1 likes property
+    // Kun hvis det ikke allerede 
+    await User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}})  //
+    
+    //Finder bruger 2
+    const user2 =  await User.findOne({_id: secondId});
+    let user2Likes = user2.likes
+
+    // Looper igennem user2 likes 
+    for(i = 0; i < user2Likes.length; i++){
+        // Hvis user2 likes = user1 id er det et match 
+        if( user2Likes[i] == firstId){
+            await User.updateOne({_id: firstId}, {$addToSet: {"matches": secondId}})
+            await User.updateOne({_id: secondId}, {$addToSet: {"matches": firstId}})
+            res.send({message: 'Its a match!!!'})
+        break;
+        } else {
+            console.log('Not a Match!!!')
+        }
+    }
    
-    match.insertMany({
+    User.findOne()
+    .then (res.send('hej'))
+
+});
+/*
+    maltch.insertMany({
         name: req.body.name,
         age: req.body.age,
         interest: req.body.interest
@@ -146,7 +176,7 @@ router.post('/like', (req, res) =>{
             error: err
         });
     });
-});
+    */
 
 // Dislike funktionalitet
 router.post('/dislike', (req, res) =>{
@@ -154,8 +184,24 @@ router.post('/dislike', (req, res) =>{
 });
 
 //Se alle brugerens matches
+router.post('/matches/:id', (req, res) =>{
+    var userId = req.body.id
+
+   var user = User.find({ _id: userId})
+
+   .then(matches => {
+    res.render('match', {'match': matches});
+})
+.catch( err => {
+    res.status(500).json({
+    error: err
+    });
+});
+   
+})
+/*
 router.post('/matches', (req, res) =>{
-    match.find()
+    User.find()
     .then(matches => {
         res.render('match', {'match': matches});
     })
@@ -165,6 +211,7 @@ router.post('/matches', (req, res) =>{
         });
     });
 })
+*/
 
 // Slet sine matches
 router.post('/matches/delete', (req, res) =>{

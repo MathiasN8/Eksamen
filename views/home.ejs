@@ -92,8 +92,8 @@
 
             <!--Match knap -- midt div -->
             <div id="matchBtn">
-                <form method="POST" action="http://localhost:3000/user/matches" name="matchForm" role="form" enctype="application/json"> 
-                    <!--<input type="submit" id="knap" value="Matches"> -->
+                <form method="POST" action="http://localhost:3000/user/matches/<%=user.id%>" name="matchForm" role="form" enctype="application/json"> 
+                    <input type="text" value='<%= user._id %>' name="id" style="display: none;">
                     <button type="submit" id="knap">Matches</button>
                 </form>
             </div>
@@ -145,7 +145,7 @@
                 <div id="list">  
                         
                     <% ul.forEach(function (ul) { %>
-                        <form method="POST" action= "http://localhost:3000/user/like" name="likeForm" role="form" enctype="application/json">
+                        <form method="POST" action= "http://localhost:3000/user/like/<%=user.id%>" name="likeForm" role="form" enctype="application/json">
                             <h3><%= ul.name %></h3>
                             <ul>
                                 <li> Age: <%=ul.age%> </li>
@@ -154,11 +154,13 @@
                             </ul>  
                             <br>
                             
+                            <input type="text" value='<%= ul.id %>' name="id" style="display: none;">
                             <input type="text" value='<%= ul.name %>' name="name" style="display: none;">
                             <input type="text" value='<%= ul.age %>' name="age" style="display: none;" >
                             <input type="text" value='<%= ul.interest %>' name="interest" style="display: none;" >
+                            
 
-                            <button type="submit" class="likeBnt"> Like </button>
+                            <button  type="submit" class="likeBnt"> Like </button>
                             <button type="submit" formaction="http://localhost:3000/user/dislike" class="dislikeBnt"> Dislike </button>
                             
                         </form>                   

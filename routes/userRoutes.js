@@ -10,6 +10,7 @@ const User = require('../models/userModel');
 const match = require('../models/matchModel');
 
 
+
 //Laver en ny user i sign up diven
 router.post('/signup', (req, res) =>{
 
@@ -184,21 +185,25 @@ router.post('/dislike', (req, res) =>{
 });
 
 //Se alle brugerens matches
-router.post('/matches/:id', (req, res) =>{
-    var userId = req.body.id
+router.post('/matches', (req, res) =>{
+    
+    //const userId = await User.findOne({_id: req.body.id}) 
 
-   var user = User.find({ _id: userId})
-
-   .then(matches => {
-    res.render('match', {'match': matches});
-})
-.catch( err => {
-    res.status(500).json({
-    error: err
-    });
+    //const matches = await User.find({_id: {$in: userId.matches}})
+    User.findOne({_id: req.body.id})
+    .then( userId => {
+         User.find({_id: {$in: userId.matches}})
+        .then(matches =>{
+            res.render('match', {'match': matches});
+        })
+        .catch( err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+    })    
 });
-   
-})
+
 /*
 router.post('/matches', (req, res) =>{
     User.find()

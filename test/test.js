@@ -49,7 +49,7 @@ describe('Post /signup', () =>{
 })
 */
 
-
+/*
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
@@ -86,3 +86,4 @@ describe('Test API', () =>{
         
     });
 });
+*/

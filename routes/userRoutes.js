@@ -7,7 +7,8 @@ const mongoose = require('mongoose');
 router.use(express.static( './views/'));
 
 const User = require('../models/userModel');
-const match = require('../models/matchModel');
+//const match = require('../models/matchModel');
+
 
 
 
@@ -139,7 +140,7 @@ router.post('/like/:id', async (req, res) =>{
     
     // Smider den user2 ID ind in den user1 likes property
     // Kun hvis det ikke allerede 
-    await User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}})  //
+    await User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}})
     
     //Finder bruger 2
     const user2 =  await User.findOne({_id: secondId});
@@ -157,27 +158,11 @@ router.post('/like/:id', async (req, res) =>{
             console.log('Not a Match!!!')
         }
     }
-   
+   /*
     User.findOne()
     .then (res.send('hej'))
-
-});
-/*
-    maltch.insertMany({
-        name: req.body.name,
-        age: req.body.age,
-        interest: req.body.interest
-
-    })
-    .then(
-        res.send('It is a match!!!!')
-    )
-    .catch(err => {
-        res.status(500).json({
-            error: err
-        });
-    });
     */
+});
 
 // Dislike funktionalitet
 router.post('/dislike', (req, res) =>{
@@ -185,16 +170,15 @@ router.post('/dislike', (req, res) =>{
 });
 
 //Se alle brugerens matches
-router.post('/matches', (req, res) =>{
+router.post('/matches/:id', (req, res) =>{
     
-    //const userId = await User.findOne({_id: req.body.id}) 
-
-    //const matches = await User.find({_id: {$in: userId.matches}})
+    //Finder først useren 
     User.findOne({_id: req.body.id})
     .then( userId => {
+        //Finder alle brugerne der har samme id, som dem der er i match property
          User.find({_id: {$in: userId.matches}})
         .then(matches =>{
-            res.render('match', {'match': matches});
+            res.render('match', {'match': matches, 'user': userId});
         })
         .catch( err => {
             res.status(500).json({
@@ -204,40 +188,19 @@ router.post('/matches', (req, res) =>{
     })    
 });
 
-/*
-router.post('/matches', (req, res) =>{
-    User.find()
-    .then(matches => {
-        res.render('match', {'match': matches});
-    })
-    .catch( err => {
-        res.status(500).json({
-        error: err
-        });
-    });
-})
-*/
-
 // Slet sine matches
-router.post('/matches/delete', (req, res) =>{
-    match.find({_id: req.body.id})
-//Skal kunne gen indlæse siden 
-    match.deleteOne({_id: req.body.id})
-    .then( 
-        match.find()
-        .then(matches => {
-            res.render('match', {'match': matches});
-        })
-        //window.location.reload()
-        //res.send('Match deleted')
-        //res.render('match', {match: result})
-    )
-    .catch( err => {
-        res.status(500).json({
-        error: err
-        });
-    });
-})
+router.post('/matches/:id/delete', (req, res) =>{
+
+    // $pull fjerner element i array der matcher en given værdi
+    User.update(
+        {_id: req.params.id}, {$pull: {matches:{$in: req.body.id}, likes: req.body.id}})
+    .then(
+        User.update({_id: req.body.id}, {$pull: {matches:{$in: req.params.id}, likes: req.params.id}})
+        .then(
+            res.send('Match deleted --- press back arraw')
+        )
+    );
+});
 
 
 module.exports = router;

@@ -92,7 +92,7 @@
 
             <!--Match knap -- midt div -->
             <div id="matchBtn">
-                <form method="POST" action="http://localhost:3000/user/matches" name="matchForm" role="form" enctype="application/json"> 
+                <form method="POST" action="http://localhost:3000/user/matches/<%=user.id%>" name="matchForm" role="form" enctype="application/json"> 
                     <input type="text" value='<%= user._id %>' name="id" style="display: none;">
                     <button type="submit" id="knap">Matches</button>
                 </form>
@@ -160,7 +160,7 @@
                             <input type="text" value='<%= ul.interest %>' name="interest" style="display: none;" >
                             
 
-                            <button  type="submit" class="likeBnt"> Like </button>
+                            <button type="submit" class="likeBnt"> Like </button>
                             <button type="submit" formaction="http://localhost:3000/user/dislike" class="dislikeBnt"> Dislike </button>
                             
                         </form>                   

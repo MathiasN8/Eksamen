@@ -54,7 +54,6 @@ router.get("/:userId", function(req,res,){
     
             res.status(200).json(doc);
         })
-    
         .catch(err => {
             console.log(err)
             res.status(500).json({error: err });

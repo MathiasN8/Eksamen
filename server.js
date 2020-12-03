@@ -37,6 +37,8 @@ app.get('/', function(req, res) {
 });
 
 //Server kører på port 3000
-app.listen(3000, function(){
+var server = app.listen(3000, function(){
     console.log("Server kører");
 });
+
+module.exports = server

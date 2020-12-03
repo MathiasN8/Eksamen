@@ -36,7 +36,7 @@ router.post('/signup', (req, res) =>{
             user.save()
             .then(result => {
                 if (result) {
-                    res.render('index')
+                    res.render('index');
                 } else {
                     res.status(404).json({message: "fejl i oprettelse"});
                 }
@@ -152,12 +152,13 @@ router.post('/like/:id', async (req, res) =>{
         if( user2Likes[i] == firstId){
             await User.updateOne({_id: firstId}, {$addToSet: {"matches": secondId}})
             await User.updateOne({_id: secondId}, {$addToSet: {"matches": firstId}})
-            res.send({message: 'Its a match!!!'})
+            //res.status(200).json({message: "Its a Match!!"});
         break;
         } else {
             console.log('Not a Match!!!')
         }
     }
+    
    /*
     User.findOne()
     .then (res.send('hej'))
@@ -166,7 +167,7 @@ router.post('/like/:id', async (req, res) =>{
 
 // Dislike funktionalitet
 router.post('/dislike', (req, res) =>{
-    res.send('It is not a match');
+    res.status(200).json({message: 'It is not a match'});
 });
 
 //Se alle brugerens matches
@@ -197,7 +198,7 @@ router.post('/matches/:id/delete', (req, res) =>{
     .then(
         User.update({_id: req.body.id}, {$pull: {matches:{$in: req.params.id}, likes: req.params.id}})
         .then(
-            res.send('Match deleted --- press back arraw')
+            res.send('Match deleted --- press back arrow')
         )
     );
 });

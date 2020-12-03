@@ -1,89 +1,59 @@
 
-
-/*
-const expect = require('chai').expect;
+const assert = require('assert');
+const { json } = require('express');
+const expect = require('chai').expect
 const request = require('supertest');
+const routes = require('../server');
 
-const app = require('../routes/userRoutes');
-const conn = require('../server');
-
-describe('Post /signup', () =>{
-
-    before((done)  =>{
-        conn.connect()
-            .then(() => done())
-            .catch((err) => done(err))
-    })
-
-    after((done)  =>{
-        conn.close()
-            .then(() => done())
-            .catch((err) => done(err))
-    })
-
-    it('OK, creating a new user works', (done) =>{
-       request(app).post('/login')
-        
-        .send({ 
-            name: 'Testing',
-            age: 3,
-            interest: 'testing',
-            email: 'testing@email.dk',
-            password: 'testing'
+describe('Unit testing af match notifikationen', () =>{
+    
+    it('should return status 200', () =>{  
+      return request(routes)
+        .post('/like/:id')
+        .then((response) =>{
+            expect(response.status).to.equal(404);
         })
+    });
+    
+    it('Should return a string', () =>{
         
-        .then((res) =>{
-            
-            expect(res.body).to.contain.property('_id');
-            expect(res.body).to.contain.property('name');
-            expect(res.body).to.contain.property('age');
-            expect(res.body).to.contain.property('interest');
-            expect(res.body).to.contain.property('email');
-            expect(res.body).to.contain.property('password');
-            done();
-            
-        })
-    })
-
-
-})
-*/
+        return request(routes)
+          .post('/like/:id')
+          .then((response) =>{
+            expect(response.text).to.be.a('string');
+          })
+    });
+    
+});
 
 /*
-const chai = require('chai');
-const chaiHttp = require('chai-http');
+const userModel = require('../models/userModel');
+const mongoose = require('mongoose');
 
-const server = require('../routes/userRoutes');
+const mocha = require('mocha');
+const assert = require('assert');
 
-//Assertions style 
-chai.should();
 
-chai.use(chaiHttp);
 
-describe('Test API', () =>{
-
-    describe('Post /signup', () =>{
-        it('It should POST a new user', (done) =>{
-            const user = {
-                name: 'Testing',
-                age: 3,
-                interest: 'testing',
-                email: 'testing@email.dk',
-                password: 'testing'
-            };
-            chai.request(server)
-                .post('/user/signup')
-                .send(user)
-                .end((err, response) =>{
-                    response.should.have.property('name');
-                    response.should.have.property('age');
-                    response.should.have.property('interest');
-                    response.should.have.property('email');
-                    response.should.have.property('password');
-                done();
-                });
-        });
+describe('Post request', () =>{
+    it('Should create a new user', (done) =>{
+        let user = new userModel({
+            name: 'Test',
+            age: 99,
+            interest: 'Testing',
+            email: 'test@testin.com',
+            password: 'Test123',
+            likes: ['test1', 'test2'],
+            matches: ['test3', 'test4']
+            
+        })
+        user.save()
+        .then( test=>{
+            assert(!user.isNew);       
+            done();
+        })
+        .catch(done);
         
-    });
-});
+    })
+})
 */

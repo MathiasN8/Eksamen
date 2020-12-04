@@ -135,8 +135,10 @@ router.post('/delete', (req, res) =>{
 //Like funktionalitet
 router.post('/like/:id', async (req, res) =>{
 
-    var firstId = req.params.id  // First user = den person der liker
-    var secondId = req.body.id  // Second user = den person der bliver liked
+    var firstId = req.params.id; // First user = den person der liker
+    var secondId = req.body.id;  // Second user = den person der bliver liked
+
+    console.log(firstId, secondId);
     
     // Smider den user2 ID ind in den user1 likes property
     // Kun hvis det ikke allerede 

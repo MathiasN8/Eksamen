@@ -22,7 +22,7 @@ mongoose.connect('mongodb+srv://Matti:famnielsen@restapi.rsmlk.mongodb.net/RestA
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-//Starte mine routes op
+//Starter mine routes op
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes); 
 

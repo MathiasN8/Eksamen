@@ -23,7 +23,6 @@ router.post('/signup', (req, res) =>{
                 message: 'Email exists'
             });
         } else{
-
             //Opretter User ud fra mongo Schema 
             const user = new User({
                 _id: mongoose.Types.ObjectId(),
@@ -43,7 +42,6 @@ router.post('/signup', (req, res) =>{
             })
             .catch(err => {
                 if (err) {
-                    console.log(err);
                     res.status(500).json({
                         error: err
                     });
@@ -56,35 +54,31 @@ router.post('/signup', (req, res) =>{
 //Login route. se om der er en bruger i databasen med de informationer
 router.post('/login', (req, res) =>{
     User.find({ email: req.body.email})
-        .then(users => {
-            if (users.length < 1){
-                return res.status(404).json({
-                    message: 'User does not exist' 
-                });
-            }
-        
-            if(users[0].password == req.body.password){
-                //res.status(404).json(users[0]);
-                //Finder brugerne, så man kan se dem under potentiele mathces
-                //Bruger metoden $ne = Not equal. Der viser alle undtagen den person der er logget ind
-                User.find({ email:{$ne: req.body.email}})
-                .then(list => {
-                    res.render('home', { 'user': users[0], 'ul': list});
-                })
-            } 
-            
-            else {
-                return res.status(404).json({
-                    message: 'Login failed'
-                });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
+    .then(users => {
+        if (users.length < 1){
+            return res.status(404).json({
+                message: 'User does not exist' 
             });
+        }
+        if(users[0].password == req.body.password){
+            //res.status(404).json(users[0]);
+            //Finder brugerne, så man kan se dem under potentiele mathces
+            //Bruger metoden $ne = Not equal. Der viser alle undtagen den person der er logget ind
+            User.find({ email:{$ne: req.body.email}})
+            .then(list => {
+                res.render('home', { 'user': users[0], 'ul': list});
+            })
+        } else {
+            return res.status(404).json({
+                message: 'Login failed'
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
         });
+    });
 });
 
 //Updatere user 
@@ -110,7 +104,6 @@ router.post('/update', (req, res) =>{
 
 //Skal kunne slet sin egen profil
 router.post('/delete', (req, res) =>{
-    //User.deleteOne({_id: req.body._id})
     User.find({_id: req.body.id})
     .then(result =>{
         if(result.length < 1){
@@ -120,9 +113,8 @@ router.post('/delete', (req, res) =>{
         }
         User.deleteOne({_id: req.body.id})
         .then(user =>{
-            res.json({Message: 'User deleted', user: user})
-        })
-        
+            res.json({Message: 'User deleted', user: user});
+        });
     })
     .catch(err => {
         res.status(500).json({
@@ -137,13 +129,12 @@ router.post('/like/:id', async (req, res) =>{
 
     var firstId = req.params.id; // First user = den person der liker
     var secondId = req.body.id;  // Second user = den person der bliver liked
-
-    console.log(firstId, secondId);
     
     // Smider den user2 ID ind in den user1 likes property
-    // Kun hvis det ikke allerede 
-    await User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}})
-    
+    // Kun hvis det ikke allerede er der
+    await User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}});
+
+
     //Finder bruger 2
     const user2 =  await User.findOne({_id: secondId});
     let user2Likes = user2.likes
@@ -195,8 +186,7 @@ router.post('/matches/:id', (req, res) =>{
 router.post('/matches/:id/delete', (req, res) =>{
 
     // $pull fjerner element i array der matcher en given værdi
-    User.update(
-        {_id: req.params.id}, {$pull: {matches:{$in: req.body.id}, likes: req.body.id}})
+    User.update({_id: req.params.id}, {$pull: {matches:{$in: req.body.id}, likes: req.body.id}})
     .then(
         User.update({_id: req.body.id}, {$pull: {matches:{$in: req.params.id}, likes: req.params.id}})
         .then(

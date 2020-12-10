@@ -7,7 +7,6 @@ router.use(express.static( './views/'));
 const userSchema = require('../models/userModel');
 const adminModel = require('../models/adminModel');
 
-
 //Se en liste over alle users
 router.post('/', (req, res) => {
     //checker om admin findes

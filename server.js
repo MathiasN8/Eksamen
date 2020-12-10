@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-
-//const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -18,7 +16,7 @@ mongoose.connect('mongodb+srv://Matti:famnielsen@restapi.rsmlk.mongodb.net/RestA
     useUnifiedTopology: true
 });
 
-//Body-parser?
+//Body-parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -28,7 +26,6 @@ app.use('/user', userRoutes);
 
 
 //Show index.html on localhost
-//app.use(express.static(path.resolve(__dirname, 'views')));
 app.use(express.static(__dirname + '/views/'));
 
 //forside 

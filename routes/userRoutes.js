@@ -2,14 +2,11 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-
 // viser ccs filer som static
 router.use(express.static( './views/'));
 
 const User = require('../models/userModel');
 //const match = require('../models/matchModel');
-
-
 
 
 //Laver en ny user i sign up diven
@@ -107,7 +104,7 @@ router.post('/delete', (req, res) =>{
     User.find({_id: req.body.id})
     .then(result =>{
         if(result.length < 1){
-            return res.status(404).json({
+            return res.status(400).json({
                 message: 'User does not exist' 
             }); 
         }
@@ -125,37 +122,38 @@ router.post('/delete', (req, res) =>{
 
 
 //Like funktionalitet
-router.post('/like/:id', async (req, res) =>{
-
+router.post('/like/:id',(req, res) =>{
     var firstId = req.params.id; // First user = den person der liker
     var secondId = req.body.id;  // Second user = den person der bliver liked
-    
+
     // Smider den user2 ID ind in den user1 likes property
     // Kun hvis det ikke allerede er der
-    await User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}});
-
-
-    //Finder bruger 2
-    const user2 =  await User.findOne({_id: secondId});
-    let user2Likes = user2.likes
-
-    // Looper igennem user2 likes 
-    for(i = 0; i < user2Likes.length; i++){
-        // Hvis user2 likes = user1 id er det et match 
-        if( user2Likes[i] == firstId){
-            await User.updateOne({_id: firstId}, {$addToSet: {"matches": secondId}})
-            await User.updateOne({_id: secondId}, {$addToSet: {"matches": firstId}})
-            //res.status(200).json({message: "Its a Match!!"});
-        break;
-        } else {
-            console.log('Not a Match!!!')
-        }
-    }
-    
-   /*
-    User.findOne()
-    .then (res.send('hej'))
-    */
+    User.updateOne({_id: firstId}, {$addToSet: {"likes": secondId}})
+    .then( like =>{
+        //Finder bruger 2
+        const user2 = User.findOne({_id: secondId})
+        .then( userLike =>{
+            let user2Likes = user2.likes
+            // Looper igennem user2 likes 
+            for(i = 0; i < user2Likes.length; i++){
+                // Hvis user2 likes = user1 id er det et match 
+                if( user2Likes[i] == firstId){
+                    User.updateOne({_id: firstId}, {$addToSet: {"matches": secondId}})
+                    .then(
+                        User.updateOne({_id: secondId}, {$addToSet: {"matches": firstId}})
+                    );
+                break;
+                } else {
+                console.log('Not a Match!!!');
+                }
+            }
+       });
+    })
+    .catch( err => {
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 // Dislike funktionalitet
@@ -184,7 +182,6 @@ router.post('/matches/:id', (req, res) =>{
 
 // Slet sine matches
 router.post('/matches/:id/delete', (req, res) =>{
-
     // $pull fjerner element i array der matcher en given værdi
     User.update({_id: req.params.id}, {$pull: {matches:{$in: req.body.id}, likes: req.body.id}})
     .then(
@@ -192,7 +189,12 @@ router.post('/matches/:id/delete', (req, res) =>{
         .then(
             res.send('Match deleted --- press back arrow')
         )
-    );
+    )
+    .catch( err => {
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 

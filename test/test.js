@@ -1,47 +1,14 @@
 
-const assert = require('assert');
+const expect = require('chai').expect;
+const User = require('../models/userModel');
 
-const expect = require('chai').expect
-const request = require('supertest');
-const routes = require('../server');
-
-describe('Unit testing af match notifikationen', () =>{
-    
-    it('should return status 200', () =>{  
-      return request(routes)
-        .post('/like/:id')
-        .then((response) =>{
-            expect(response.status).to.equal(404);
-        })
-    });
-    
-    it('Should return a string', () =>{
-        
-        return request(routes)
-          .post('/like/:id')
-          .then((response) =>{
-            expect(response.text).to.be.a('string');
-          })
-    });
-    
-});
-
-/*
-const userModel = require('../models/userModel');
-const mongoose = require('mongoose');
-
-const mocha = require('mocha');
-const assert = require('assert');
-
-
-
-describe('Post request', () =>{
-    it('Should create a new user', (done) =>{
-        let user = new userModel({
+describe('Create a new user', () =>{
+    it('Should create a user objekt', (done) =>{
+        let user = new User({
             name: 'Test',
             age: 99,
             interest: 'Testing',
-            email: 'test@testin.com',
+            email: 'test@testing.com',
             password: 'Test123',
             likes: ['test1', 'test2'],
             matches: ['test3', 'test4']
@@ -49,11 +16,17 @@ describe('Post request', () =>{
         })
         user.save()
         .then( test=>{
-            assert(!user.isNew);       
+            expect(test).to.be.a('object');
+            expect(test).to.have.property('name');
+            expect(test).to.have.property('age');
+            expect(test).to.have.property('interest');
+            expect(test).to.have.property('email');
+            expect(test).to.have.property('password');
+            expect(test).to.have.property('likes');
+            expect(test).to.have.property('matches'); 
             done();
         })
         .catch(done);
-        
-    })
-})
-*/
+    });
+});
+

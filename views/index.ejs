@@ -8,27 +8,8 @@
             <title>Dating app</title>
             <link rel="stylesheet" href="index.css">
             <link rel="stulesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-            <script>
-                
-                window.addEventListener("DOMContentLoaded", () => {
-
-                    const form =document.getElementById('signInForm');
-                    const signInBtn = document.getElementById('signInBtn');
-                    const email = document.getElementById('signInEmail');
-                    const password = document.getElementById('signInPassword');
-
-                    signInBtn.addEventListener('submit', function(){
-                        localStorage.setItem("email", email.value);
-                        localStorage.setItem("password", password.value);
-                    })
-            
-                });
-
-            </script>
             
         </head>
-
         <body>
             
                 <h1>Dating App</h1>
@@ -115,8 +96,6 @@
 
            <script src="../server.js"></script>
            <script src="../models/userModel.js"></script>
-i
-
         </body>
 
     </html>

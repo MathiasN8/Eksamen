@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 router.use(express.static( './views/'));
 
 const User = require('../models/userModel');
-//const match = require('../models/matchModel');
-
 
 //Laver en ny user i sign up diven
 router.post('/signup', (req, res) =>{
@@ -58,7 +56,6 @@ router.post('/login', (req, res) =>{
             });
         }
         if(users[0].password == req.body.password){
-            //res.status(404).json(users[0]);
             //Finder brugerne, så man kan se dem under potentiele mathces
             //Bruger metoden $ne = Not equal. Der viser alle undtagen den person der er logget ind
             User.find({ email:{$ne: req.body.email}})
